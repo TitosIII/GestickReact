@@ -141,7 +141,7 @@ function Cart() {
     carrito.forEach((item)=>{
       totalPrice += item.props.exis * item.props.price;
     });
-    return totalPrice;
+    return totalPrice.toFixed(2);
   };
 
   baseDeDatos.forEach((data) => {
