@@ -1,0 +1,132 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-dark: #2f3640;
+    --color-dark-x: #616161;
+    --color-dark-xx: #1f232b;
+    --color-light: #01A7C2;
+    --color-grey: #01A7C2;
+}
+
+
+.bg-light {
+    background-color: var(--color-light)!important;
+}
+
+.bg-dark {
+    background-color: var(--color-dark)!important;
+}
+
+.p-6 {
+    padding: 4rem 7rem;
+}
+
+.btn {
+    font-weight: 400;
+    padding: 1rem 2rem;
+    border-radius: 5rem;
+    min-width: 10rem;
+}
+
+.btn-outline-dark {
+    border: 2px solid var(--color-dark-xx);
+}
+
+
+.form-control {
+    color: aliceblue;
+    background-color: var(--color-dark-xx);
+    border: 2px solid var(--color-dark-xx);
+    border-radius: .2rem;
+    padding: 1.5rem 1rem;
+}
+
+.register-bg {
+    background-image: url('/Decoration/Registro.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.testiomonial {
+    bottom: 10px
+}
+
+    #primero{
+        min-height: 100vh;
+        flex-grow: 1;
+;    }
+
+    #segundo{
+        grid-area: top / start / 8 /end;
+    }
+
+    #tercero{
+        background-image: linear-gradient(white 0%, rgb(247, 250, 252) 33%);
+        flex-grow: 1;
+    }
+
+    #cuarto{
+        grid-area: 4/2/auto/5;
+    }
+
+    #quinto{
+        flex-grow: 1;
+    }
+
+    #sexto{
+        grid-area: 6/start/auto/2;
+    }
+
+    #septimo{
+        grid-area: 7/start/auto/4;
+    }
+
+    #octavo{
+        grid-area: 8 / 4 / auto / 6;
+    }
+
+    #noveno{
+        grid-area: "2 / 15 / auto / end";
+    }
+
+    #decimo{
+        grid-area: "3 / 14 / auto / end";
+    }
+
+    #onceavo{
+        grid-area: "4 / 17 / auto / 20";
+    }
+
+    #doceavo{
+        grid-area: "5 / 14 / auto / 17";
+    }
+
+    #trece{
+        flex-grow:1;
+        z-index: 9;
+    }
+
+@media (max-width: 575.98px) {
+    .p-6 {
+        padding: 2rem;
+    }
+
+    .contact-box {
+        padding: 0;
+    }
+
+    .width-100 {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1200px) { 
+    .register-bg {
+        min-height: 50vh;
+    }
+}
