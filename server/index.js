@@ -3,7 +3,7 @@ import cors from 'cors'
 import { PORT } from "./config.js";
 import indexRoutes from './routes/index.routes.js'
 import taskRoutes from './routes/gestick.routes.js'
-import session from "express-session";'express-session'
+import session from "express-session";
 
 
 const app = express();

@@ -1,8 +1,10 @@
 import { Form, Formik } from 'formik'
 import { logAdmin } from '../api/gestick.api'
 import '../../public/CSS/login.css'
+import { useState } from 'react'
 
 export default function LoginAdmin() {
+    const [message, setMessage] = useState("");
 
     return (
         <section id='login'>
@@ -47,16 +49,24 @@ export default function LoginAdmin() {
                         <div className="formbg-outer">
                             <Formik
                                 initialValues={{
-                                    idAdmin: "",
-                                    AdContrasenna: ""
+                                    idAdmin: null,
+                                    password: null
                                 }}
+
+                                
 
                                 onSubmit={async (values) => {
                                     console.log(values)
+                                    values.idAdmin = parseInt(values.idAdmin);
                                     try {
                                         const response = await logAdmin(values);
                                         console.log(response);
-                                        window.location.href = "http://127.0.0.1:5173/Tablero";
+                                        if(response.data.error){
+                                            setMessage(response.data.error);
+                                            console.log(response.data.error);
+                                        }else{
+                                            ///window.location.href = "http://localhost:5173/Tablero";
+                                        }
                                     } catch (error) {
                                         console.log(error)
                                     }
@@ -69,15 +79,16 @@ export default function LoginAdmin() {
                                                 <span id="spanLogin" className="padding-bottom--15">Iniciar sesion Administrador</span>
                                                     <div className="field padding-bottom--24">
                                                         <label id="labelLogin" htmlFor="idAdmin">ID Administrador O Nombre De Usuario</label>
-                                                        <input type="idAdmin" name="idAdmin" id="idAdmin" required onChange={handleChange}/>
+                                                        <input type="number" name="idAdmin" id="idAdmin" required onChange={handleChange}/>
                                                     </div>
                                                     <div className="field padding-bottom--24">
                                                         <div className="grid--50-50">
-                                                            <label id="labelLogin" htmlFor="AdContrasenna">Contraseña</label>
+                                                            <label id="labelLogin" htmlFor="password">Contraseña</label>
                                                         </div>
-                                                        <input type="AdContrasenna" name="AdContrasenna" id="AdContrasenna" required onChange={handleChange}/>
+                                                        <input type="password" name="password" id="password" required onChange={handleChange}/>
                                                     </div>
                                                     <div className="field field-checkbox padding-bottom--24 flex-flex align-center">
+                                                        {message}
                                                     </div>
                                                     <div className="field padding-bottom--24">
                                                         <button className="button" type="submit" disabled={isSubmitting}>

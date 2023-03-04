@@ -46,7 +46,7 @@ export default function LoginEmpleado() {
                             <div className="formbg">
                                 <div className="formbg-inner padding-horizontal--48">
                                     <span id="spanLogin" className="padding-bottom--15">Iniciar sesion empleado</span>
-                                    <form id="stripe-login" action="/logEmpleado" method="post">
+                                    <form id="stripe-login" action="/loginEmpleado" method="post">
                                         <div className="field padding-bottom--24">
                                             <label id="labelLogin" htmlFor="id">ID Empleado O Nombre De Usuario</label>
                                             <input type="id" name="id" id="id" />

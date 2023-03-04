@@ -37,26 +37,27 @@ export const signAdmin = async (req, res) => {
 
 ///Inicio de sesión para el administrador.
 export const logAdmin = async (req, res) => {
+    console.log(req.body);
     const { idAdmin, password } = req.body
 
-    db.query('SELECT * FROM Admin WHERE idAdmin = ? AND AdContrasenna = ?', [
-        idAdmin,
-        password
-    ],
-        (err, results) => {
-            console.log(results)
-            console.log(err)
-            if (err) throw err;
+    try{
+        const [results] = await db.query(`SELECT * FROM Admin WHERE idAdmin = ${idAdmin} AND AdContrasenna = "${password}"`, [
+            idAdmin,
+            password
+        ])
 
-            if (results.length > 0) {
-                req.session.loggedin = true;
-                req.session.username = idAdmin;
-                res.redirect('/Tablero')
-            } else {
-                res.send('ID Incorrectos O Contraseña Incorrecta')
-            }
+        console.log(results);
+
+        if (results.length > 0) {
+            res.json(results[0]);
+        } else {
+            res.json({error: 'ID Incorrectos O Contraseña Incorrecta'});
         }
-    )
+    }catch(error){
+        res.json({error: "Hubo un error en el servidor. Vuelva a intentarlo más tarde."});
+        console.log(error)
+    }
+
 };
 
 //tablero Sesión
@@ -208,7 +209,7 @@ export const stockPage = async (req, res) => {
             });
         }
 
-        res.render("./inventario", empdata);
+        res.json(empdata);
     }
 };
 
