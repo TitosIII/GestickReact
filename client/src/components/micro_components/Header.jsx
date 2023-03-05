@@ -1,4 +1,7 @@
+import {ReactSession} from "react-client-session";
+
 export default function Header() {
+    const signOff = ()=> {ReactSession.removeItem("idAdmin"); console.log(ReactSession.removeItem("idAdmin"))};
     return (
         <div><header>
             <h2 className="logo">GESTICK</h2>
@@ -11,7 +14,7 @@ export default function Header() {
                 <a href="/InventarioProductos">Productos</a>
                 <a href="/Empleados">Empleados</a>
                 <a href="/EstadoGeneralAdmin">Estado General</a>
-                <a href="/"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
+                <a onClick={()=>{signOff()}} href="/"><i class="fa-solid fa-arrow-right-from-bracket"></i></a>
                 <label htmlFor="check" className="esconder-menu">
                     &#215
                 </label>
